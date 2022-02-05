@@ -1,3 +1,4 @@
+import { marked } from "marked";
 import React from "react";
 import { LoaderFunction, useLoaderData } from "remix";
 import invariant from "tiny-invariant";
@@ -11,7 +12,7 @@ export const loader: LoaderFunction = async ({ params }) => {
 function PostSlug() {
   const post = useLoaderData();
 
-  return <div dangerouslySetInnerHTML={{ __html: post.html }} />;
+  return <div dangerouslySetInnerHTML={{ __html: marked(post.body) }} />;
 }
 
 export default PostSlug;

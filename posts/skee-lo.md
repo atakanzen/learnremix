@@ -2,6 +2,4 @@
 title: Bilmiyorum
 ---
 
-# Skee-lo
-
-dinlerken.
+HAHAHAHAHA

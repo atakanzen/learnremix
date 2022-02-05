@@ -7,6 +7,7 @@ import { marked } from "marked";
 export type Post = {
   slug: string;
   title: string;
+  markdown: string;
 };
 
 export type PostMarkdownAttributes = {
@@ -52,6 +53,11 @@ export async function getPost(slug: string) {
     `Post ${filepath} is missing attributes`
   );
 
-  const html = marked(body);
-  return { slug, html, title: attributes.title };
+  return { slug, body, title: attributes.title };
+}
+
+export async function createPost(post: Post) {
+  const md = `---\ntitle: ${post.title}\n---\n\n${post.markdown}`;
+  await fs.writeFile(path.join(postsPath, post.slug + ".md"), md);
+  return getPost(post.slug);
 }
