@@ -1,4 +1,9 @@
-import React, { ChangeEventHandler, useState } from "react";
+import React, {
+  ChangeEventHandler,
+  ReactType,
+  useEffect,
+  useState,
+} from "react";
 import {
   redirect,
   ActionFunction,
@@ -54,6 +59,16 @@ export default function EditPost() {
   const transition = useTransition();
   const post = useLoaderData();
 
+  const [body, setBody] = useState(post.body);
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setBody(e.target.value);
+  };
+
+  useEffect(() => {
+    setBody(post.body);
+  }, [post]);
+
   return (
     <Form method="post">
       <p>
@@ -77,7 +92,13 @@ export default function EditPost() {
         <label htmlFor="markdown">Markdown: </label>{" "}
         {errors?.markdown ? <em>Markdown is required</em> : null}
         <br />
-        <textarea name="markdown" id="markdown" rows={20} />
+        <textarea
+          onChange={handleChange}
+          name="markdown"
+          id="markdown"
+          rows={20}
+          value={body}
+        />
       </p>
       <p>
         <button type="submit">

@@ -2,4 +2,4 @@
 title: Bilmiyorum
 ---
 
-HAHAHAHAHA
+saka saka
