@@ -6,12 +6,12 @@ export default function NewJoke() {
     <Form id="new-joke-form">
       <div>
         <label htmlFor="joke-name" title="Name">
-          Name:{" "}
+          Name:
         </label>
         <input type="text" name="joke-name" id="joke-name" />
       </div>
       <div>
-        <label htmlFor="joke-content">Content: </label>
+        <label htmlFor="joke-content">Content:</label>
         <textarea
           name="joke-content"
           id="joke-content"
